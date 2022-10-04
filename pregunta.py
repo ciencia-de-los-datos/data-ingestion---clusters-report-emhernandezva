@@ -14,7 +14,7 @@ import pandas as pd
 
 def ingest_data():
 
-    with open ('/clusters_report.txt', 'r') as file:
+    with open ('clusters_report.txt', 'r') as file:
         data = file.readlines()
     #información de las columnas
     indice_columna = [i for i in range(len(data)) if '--\n' in data[i] ]
