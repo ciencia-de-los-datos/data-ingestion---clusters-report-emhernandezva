@@ -44,15 +44,15 @@ def ingest_data():
         c1 = int(''.join([i[0] for i in lista]).replace('\n','').replace('%','').replace('  ',' ').strip())
         c2 = int(''.join([i[1] for i in lista]).replace('\n','').replace('%','').replace('  ',' ').strip())
         c3 = float(''.join([i[2] for i in lista]).replace('\n','').replace('%','').replace('  ',' ').strip().replace(',','.'))
-        c4 = ''.join([i[3] for i in lista]).replace('\n',' ').replace('  ',' ').replace('  ',' ').replace('.','').strip()
+        c4 = re.sub(' +', ' ', ''.join([i[3] for i in lista]).replace('\n',' ').replace('.','').strip())
         filas.append([c1,c2,c3,c4])
       else:
         lista = lista_filas[posicion_sep_fila[i]:]
         c1 = int(''.join([i[0] for i in lista]).replace('\n','').replace('%','').replace('  ',' ').strip())
         c2 = int(''.join([i[1] for i in lista]).replace('\n','').replace('%','').replace('  ',' ').strip())
         c3 = float(''.join([i[2] for i in lista]).replace('\n','').replace('%','').replace('  ',' ').strip().replace(',','.'))
-        c4 = ''.join([i[3] for i in lista]).replace('\n',' ').replace('  ',' ').replace('  ',' ').replace('.','').strip()
+        c4 = re.sub(' +', ' ', ''.join([i[3] for i in lista]).replace('\n',' ').replace('.','').strip())
         filas.append([c1,c2,c3,c4]) 
-    
+
     df = pd.DataFrame(filas, columns=columnas)
     return df
